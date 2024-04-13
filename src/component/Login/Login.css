@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.formCon{
+    width: 40%;
+    margin: 50px auto;
+    padding: 25px;
+    box-shadow: 0px 5px 15px grey ;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.formCon h3{
+    font-size: 35px;
+    text-align: center;
+    color: #777;
+}
+#Ulabel{
+    font-size: 25px;
+    color: #777;
+    margin: 10px 25px;
+    /* text-transform: uppercase; */
+
+}
+#Uinput{
+    margin: 10px 25px;
+    padding: 5px;
+}
+#Plabel{
+    font-size: 25px;
+    color: #777;
+    margin: 10px 25px;
+    /* text-transform: uppercase; */
+
+}
+#Pinput{
+    margin: 10px 25px;
+    padding: 5px;
+}
+.Fbtnc{
+    display: flex;
+    justify-content: space-between;
+}
+#Fbtn{
+    margin: 10px 25px;
+    padding: 10px 25px;
+    background-color: #777;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+}
+
+
+#Fforgot,#Nacc{
+    color: #777;
+    margin: 10px 0px;
+    padding: 10px 25px;
+
+}
