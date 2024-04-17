@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import * as Images from '../../Images/index'
+import * as Images from '../Images/index'
 
 function Cart() {
 

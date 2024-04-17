@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 .card-container{
@@ -17,37 +18,40 @@
   overflow: hidden;
   background-color: aliceblue;
   box-shadow: 0 4px 6px grey;
-  
-
 }
+
 .card-image{
   width: 100%;
-  height: 200px;
-  /* object-fit: cover; */
+  height: 300px;
+  object-fit: cover;
 }
-.card-content{
-  padding: 20px;
-}
+
 .card-title{
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-
 
 .card-description{
   font-size: 1rem;
   color: #020000;
 }
 
+
+/* Header slider css......................... */
+
 .Nav-Container{
   display: flex;
   justify-content: space-between;
-  padding: 10px 15px;
+  padding: 25px 15px;
   width: 100%;
-  background-color: grey;
   height: 60px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
 }
-.Nav-ConLogo{
+
+.Nav-ConLogo h3{
   /* color: #fff; */
   font-size: 25px;
   padding: 0px 25px;
@@ -62,34 +66,37 @@
   list-style: none;
   padding: 10px;
 }
-.Nav-Conlist ul li a{
-  text-decoration: none;
-  font-size: 20px;
-  color: black;
-}
+
 .Nav-icon{
   font-size: 25px;
   padding: 7px 25px;
 }
+.bgCol:hover{
+  color: red;
+}
 
 /* slider.......... */
-/* .number-display .Nimg{
-  image
-} */
-
 
 .slider{
   position: relative;
 }
 .slider .Sbtn1{
   position: absolute;
-  font-size: 30px;
+  font-size: 60px;
+  font-weight: 100;
+  color: #b3b3b342;
   right: 0;
   top: 50%;
 }
 .slider .Sbtn2{
   position: absolute;
-  font-size: 30px;
+  font-size: 60px;
+  font-weight: 100;
+  color: #b3b3b342;
   left: 0;
   top: 50%;
+}
+.slider .Simg{
+  object-fit: cover;
+  object-position: 0% 50%;
 }
