@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import * as Images from '../Images/index'
 import { myblack, mywhite, mygrey, myred, myyellow, myorange, myLightpurple, myLightgreen, myDarkgreen,myDarkpurple } from '../Images/index';
@@ -9,11 +9,11 @@ import { myblack, mywhite, mygrey, myred, myyellow, myorange, myLightpurple, myL
 function Homepage() {
 
   const slider = [
-    { id: 1, src: Images.Slider06, heading: "Unleash Your Style: Limited-Time Offer Inside!",
+    { id: 1, src: Images.Slider09, heading: "Unleash Your Style: Limited-Time Offer Inside!",
     para:"Step into style with our exclusive clothing offers. Discover trendy pieces at unbeatable prices. Don't miss out - shop now!"},
-    { id: 2, src: Images.Slider04, heading: "Dress to Impress: Exclusive Clothing Deals Await!",
+    { id: 2, src: Images.Slider06, heading: "Dress to Impress: Exclusive Clothing Deals Await!",
     para:"Step into style with our exclusive clothing offers. Discover trendy pieces at unbeatable prices. Don't miss out - shop now!"},
-    { id: 3, src: Images.Slider05, heading: "Fashion Frenzy: Unbeatable Deals on Trendy Styles!",
+    { id: 3, src: Images.Slider08, heading: "Fashion Frenzy: Unbeatable Deals on Trendy Styles!",
     para:"Step into style with our exclusive clothing offers. Discover trendy pieces at unbeatable prices. Don't miss out - shop now!"}
   ]
   
@@ -106,9 +106,25 @@ function Homepage() {
           <button onClick={handelprev} className='Sbtn2'><IoIosArrowBack /></button>
       </div>
 
-      <div className='set1'>
-        <div></div>
-        <div></div>
+      <div className='sec1 w-[1280px] flex justify-between p-5 mx-auto my-36'>
+        <div className='Wcat w-[600px] h-[400px] border' style={{backgroundImage:`url(${Images.womencat})`, backgroundSize: "cover"}}>
+          {/* <img className='w-[100%]' src={Images.womencat} alt="" /> */}
+          <div className='sec1catCon h-[85%] overflow-hidden'>
+            <h3 className='font-[700] text-[28px]' style={{color:myDarkpurple}}>Women</h3>
+            <p className='text-[14px] tracking-[0.25rem]' style={{color:myLightpurple}}>New Trend</p>
+            <Link to={'/women'}><p className='catSopt text-[14px] font-[600]' style={{color:myDarkpurple}}>SHOP NOW</p></Link>
+          </div>
+          
+        </div>
+        <div className='Mcat w-[600px] border' style={{backgroundImage:`url(${Images.mencat})`, backgroundSize: "cover"}}>
+          {/* <img className='w-[100%]' src={Images.mencat} alt="" /> */}
+          <div className='sec1catCon h-[85%] overflow-hidden'>
+            <h3 className='font-[700] text-[28px]' style={{color:myDarkpurple}}>Men</h3>
+            <p className='text-[14px] tracking-[0.25rem]' style={{color:myLightpurple}}>New Trend</p>
+            <Link to={'/men'}><p className='catSopt text-[14px] font-[600]' style={{color:myDarkpurple}}>SHOP NOW</p></Link>
+          </div>
+          
+        </div>
 
       </div>
 

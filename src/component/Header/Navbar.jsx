@@ -24,6 +24,7 @@ function Navbar() {
     const bgCol = {
         backgroundColor: isScroll ? '#fff' : 'transparent',
         // color: isScroll ? 'myDarkpurple' : '#fff',
+        boxShadow: isScroll ? '0px 1px 3px grey' : "",
         color: myLightpurple,
         transition: 'all .7s ease'
     }
