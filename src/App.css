@@ -69,10 +69,10 @@
 
 .Nav-icon{
   font-size: 25px;
-  padding: 7px 25px;
+  padding: 7px 10px;
 }
-.bgCol:hover{
-  color: red;
+.Hover:hover{
+  color: #8800cc;
 }
 
 /* slider.......... */
@@ -99,4 +99,12 @@
 .slider .Simg{
   object-fit: cover;
   object-position: 0% 50%;
+}
+
+.hero-Sec{
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+
 }

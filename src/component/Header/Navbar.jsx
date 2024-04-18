@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import { BsPersonCircle } from "react-icons/bs";
-import { FaShoppingCart } from "react-icons/fa";
+import { GoPerson } from "react-icons/go";
+import { PiShoppingBagThin } from "react-icons/pi"
 import { Link, useLocation } from 'react-router-dom';
-import { myblack, myred, myyellow, myorange, myLightpurple, myLightgreen, myDarkgreen,myDarkpurple, myLightpurpl } from '../Images/index';
+import { myblack, myred, myyellow, myorange, myLightpurple, myLightgreen, myDarkgreen,myDarkpurple } from '../Images/index';
 
 function Navbar() {
     const [isScroll, setIsScroll] = useState(false)
-    
-    
     useEffect(() => {
         let handelScroll = () => {
             const scrollTop = window.pageYOffset;
@@ -19,48 +17,42 @@ function Navbar() {
             }
         }
         window.addEventListener('scroll', handelScroll);
-
         return () => {window.removeEventListener('scroll', handelScroll);}
     })
     
-    console.log(isScroll);
     
     const bgCol = {
         backgroundColor: isScroll ? '#fff' : 'transparent',
         // color: isScroll ? 'myDarkpurple' : '#fff',
-        color: myDarkpurple,
+        color: myLightpurple,
         transition: 'all .7s ease'
     }
     
 
-    
-    
-//{bgCol}
-
     return (
         <>
-            <div className='Nav-Container h-[80px] font-medium ' style={bgCol}>
+            <div className='Nav-Container h-[80px] font-[500] ' style={bgCol}>
                 <div className='Nav-ConLogo flex'>
-                    <h3 style={{color:myorange}}  >e-Kart</h3>
-                    <div className='Nav-Conlist ml-10 '>
+                    <h3 style={{color:myDarkpurple}} className=' font-[800]' >Trend<span className='font-[600]'>Fusion</span></h3>
+                    <div className='Nav-Conlist ml-10 tracking-[0.25rem]'>
                         <ul>
-                            <Link to={'/'} className={`${useLocation().pathname === '/' ? 'text-[#1aa7ce]' : {bgCol} }`} > 
+                            <Link to={'/'} className={`${useLocation().pathname === '/' ? 'text-[#8800cc]' : {bgCol} }`} > 
                                 <li className='Hover'>Home</li></Link>
-                            <Link  to={'/men'} className={`${useLocation().pathname === '/men' ? 'text-[#1aa7ce]' : {bgCol}}`} >
-                                <li className='hover:text-[#1aa7ce]' >Men</li></Link>
-                            <Link to={'/women'} className={`${useLocation().pathname === '/women' ? 'text-[#1aa7ce]' : {bgCol}}`} >
-                                <li className='hover:text-[#1aa7ce]' >Women</li></Link>
-                            <Link to={'/about'} className={`${useLocation().pathname === '/about' ? 'text-[#1aa7ce]' : {bgCol}}`} >
-                                <li className='hover:text-[#1aa7ce]'>About</li></Link>
-                            <Link to={'/contact'} className={`${useLocation().pathname === '/contact' ? 'text-[#1aa7ce]' : {bgCol}}`} >
-                                <li className='hover:text-[#1aa7ce]'>Contact Us</li></Link>
+                            <Link  to={'/men'} className={`${useLocation().pathname === '/men' ? 'text-[#8800cc]' : {bgCol}}`} >
+                                <li className='Hover' >Men</li></Link>
+                            <Link to={'/women'} className={`${useLocation().pathname === '/women' ? 'text-[#8800cc]' : {bgCol}}`} >
+                                <li className='Hover' >Women</li></Link>
+                            <Link to={'/about'} className={`${useLocation().pathname === '/about' ? 'text-[#8800cc]' : {bgCol}}`} >
+                                <li className='Hover'>About</li></Link>
+                            <Link to={'/contact'} className={`${useLocation().pathname === '/contact' ? 'text-[#8800cc]' : {bgCol}}`} >
+                                <li className='Hover'>Contact Us</li></Link>
                         </ul>
                     </div>
                 </div>
 
-                <div className='flex'>
-                    <Link to={'/login'}> <div className='Nav-icon'><BsPersonCircle /></div></Link>
-                    <Link to={'/cart'}><div className='Nav-icon'><FaShoppingCart /></div></Link>
+                <div className='mr-5 flex'>
+                    <Link to={'/cart'}> <div className='Nav-icon'><PiShoppingBagThin /></div></Link>
+                    <Link to={'/login'}><div className='Nav-icon'><GoPerson /></div></Link>
                 </div>
             </div>
         {}
