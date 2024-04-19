@@ -32,7 +32,7 @@ function Navbar() {
 
     return (
         <>
-            <div className='Nav-Container h-[80px] font-[500] ' style={bgCol}>
+            <div className='Nav-Container flex justify-between w-[100%] h-[80px] px-4 py-6 font-[500] fixed z-[1000] top-0' style={bgCol}>
                 <div className='Nav-ConLogo flex'>
                     <h3 style={{color:myDarkpurple}} className=' font-[800]' >Trend<span className='font-[600]'>Fusion</span></h3>
                     <div className='Nav-Conlist ml-10 tracking-[0.25rem]'>

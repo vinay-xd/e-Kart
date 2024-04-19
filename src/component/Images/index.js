@@ -35,6 +35,7 @@ export {default as whitetShirt03} from './white-tshirt-03.jpg'
 export {default as Slider09} from './preview.webp'
 export {default as womencat} from './womenCat-01.jpg'
 export {default as mencat} from './mencat-02.jpg'
+export {default as blackTop} from './black-top.jpg'
 export const myblack = '#28282b';
 export const myred = '#880808';
 export const myyellow = '#f4bb44';
