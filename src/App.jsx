@@ -14,21 +14,21 @@ import Cart from './component/Cart/Cart'
 
 
 function App() {
-
+  
   return (
     <>
     <Router>
       <Navbar/>
       <Routes>
-        <Route path = '/' element = {<Homepage/>}/>
+        <Route path = '/' element = {<Homepage />} />
         <Route path = '/men' element = {<Men/>}/>
         <Route path = '/women' element = {<Women/>}/>
         <Route path = '/login' element = {<Login/>}/>
         <Route path = '/signup' element = {<Signup/>}/>
         <Route path = '/about' element = {<About/>}/>
         <Route path = '/contact' element = {<Contact/>}/>
-        <Route path = '/cart' element = {<Cart/>}/>
-
+        <Route path = '/cart'  element = {<Cart/>} />
+      
       </Routes>
     </Router>
     <Footer/>

@@ -12,6 +12,10 @@
   transform: translate(-50%, 50%);
   transition: all .5s ease-out;
 }
+.Overbtn:hover{
+  background-color: #8800cc !important;
+}
+
 .imgCOn:hover .Overbtn{
   bottom: 10%;
 }
@@ -109,8 +113,21 @@
 .quickCon{
   top: 50%;
   left: 50%;
+  z-index: 10;
   transform: translate(-50%, -50%);
 }
 #overlay{
   display: none;
+  z-index: 10;
+}
+
+.sec3btn{
+  transition: all .5s ease;
+}
+.sec3btn:hover{
+  background-color: #8800cc !important;
+}
+
+.FconItem ul li, th{
+  padding: 10px 5px;
 }
