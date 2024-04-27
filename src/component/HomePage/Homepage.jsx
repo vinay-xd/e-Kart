@@ -8,67 +8,18 @@ import { PiShoppingBagThin } from "react-icons/pi"
 import * as Images from "../Images/index";
 import { myblack, mywhite, mygrey, myred, myyellow, myorange, myLightpurple, myLightgreen, myDarkgreen, myDarkpurple } from "../Images/index";
 import Cart from "../Cart/Cart";
+import { useContext } from "react";
+import { MyContext } from "../../Data/ContextApi";
 
 
 function Homepage() {
-  const data = [
-    {
-      id: 1,
-      imgUrl: Images.blackTop,
-      title: "Black Top",
-      price: '₹1500',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.',
-    },
-    {
-      id: 2,
-      imgUrl: Images.lightGreenShirt01,
-      title: "Green Shirt",
-      price: '₹1000',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 3,
-      imgUrl: Images.redTop01,
-      title: "Red top",
-      price: '₹1200',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 4,
-      imgUrl: Images.brownTop,
-      title: "Brown T-shirt",
-      price: '₹700',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 5,
-      imgUrl: Images.redtShirt01,
-      title: "Red T-shirt",
-      price: '₹900',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 6,
-      imgUrl: Images.blacktShirt01,
-      title: "Black T-shirt",
-      price: '₹800',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 7,
-      imgUrl: Images.whiteTop01,
-      title: "White T-shirt",
-      price: '₹800',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-    {
-      id: 8,
-      imgUrl: Images.whitetShirt01,
-      title: "White T-shirt",
-      price: '₹700',
-      description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'
-    },
-  ];
+  const {addtoKart} = useContext(MyContext);
+  const {HomeProduct} = useContext(MyContext);
+  const {hendelQuickView, hendelQuickViewClose, view, addi} = useContext(MyContext);
+  console.log(addi);
+ 
+
+  
   const slider = [
     {
       id: 1,
@@ -125,39 +76,37 @@ function Homepage() {
     return () => clearInterval(interval)
   })
   const hendelnextSslider = () => {
-    setalpha((alpha + 1) % data.length);
+    setalpha((alpha + 1) % HomeProduct.length);
   }
   const hendelprevSslider = () => {
-    setalpha((alpha - 1 + data.length) % data.length);
+    setalpha((alpha - 1 + HomeProduct.length) % HomeProduct.length);
   }
 
   // ........................................................................quick view
-  const [view, setview] = useState(0)
-  const hendelQuickView = (index) => {
-    const quickCon = document.getElementById('quickCon');
-    const overlay = document.getElementById('overlay');
-    quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
-    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-    setview(index);
+  // const [view, setview] = useState(0)
+  // const hendelQuickView = (index) => {
+  //   const quickCon = document.getElementById('quickCon');
+  //   const overlay = document.getElementById('overlay');
+  //   quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
+  //   overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  //   setview(index);
     // console.log(index);
     // console.log('clicked');
-  }
-  const hendelQuickViewClose = () => {
-    const quickCon = document.getElementById('quickCon');
-    const overlay = document.getElementById('overlay');
-    quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
-    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-  }
+  // }
+  // const hendelQuickViewClose = () => {
+  //   const quickCon = document.getElementById('quickCon');
+  //   const overlay = document.getElementById('overlay');
+  //   quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
+  //   overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  // }
   const [count, setCount] = useState(1)
   const increase = () => { setCount(count + 1) }
   const decrease = () => { count > 0 ? setCount(count - 1) : '' }
 
-
-
- 
-
   return (
     <>
+  
+     
       {/* slider................................................... */}
       <div className="slider w-[100%] h-[700px] overflow-hidden mx-auto"
         style={{ backgroundImage: `url(${slider[number].src})`, backgroundSize: "cover", backgroundPosition: "center" }}>
@@ -204,10 +153,10 @@ function Homepage() {
           <h2>Browser Top Selling product</h2>
         </div>
         <div className="flex flex-wrap justify-around">
-          {data.map((i, index) => (
+          {HomeProduct.map((i, index) => (
             <Card
               key={i.id}
-              imgUrl={i.imgUrl}
+              imgUrl={i.imgUrl[0]}
               title={i.title}
               price={i.price}
               onClick={() => hendelQuickView(index)}
@@ -224,23 +173,28 @@ function Homepage() {
       <div className='quickCon fixed w-[1080px] p-5 m-5 bg-white' id="quickCon">
         <button onClick={hendelQuickViewClose}>X</button>
         <div className="flex justify-between m-5 ">
-          <div className='quickImgcon w-[480px] '>
-            <div className='quickMainImg'><img className="w-[100%] h-[450px] object-cover" src={data[view].imgUrl} alt="" /></div>
-            <ul className='quicksecImg'>
+          <div className='quickImgcon relative w-[480px] '>
+            <div className='quickMainImg'><img className="w-[100%] h-[450px] object-cover" src={HomeProduct[view].imgUrl[0]} alt="" /></div>
+            <ul className='quicksecImg absolute'>
+              {addi.map( (item) => (
+                  item.imgUrl.map((url) => (
+                    <li><img src={url} alt="" /></li>    
+                  ))
+              ))}
               {/* <li><img src={imgUrl} alt="" /></li> */}
             </ul>
           </div>
           <div className='quickDeccon w-[480px] px-4 py-2'>
-            <h2 className="text-[1.5rem] font-[700] mb-3" style={{ color: myDarkpurple }}>{data[view].title}</h2>
-            <p className="text-[1.1rem] font-[600] mb-5" style={{ color: myyellow }}>{data[view].price}</p>
-            <p className=" text-[.9rem] mb-10" style={{ color: myLightpurple }}>{data[view].description}</p>
+            <h2 className="text-[1.5rem] font-[700] mb-3" style={{ color: myDarkpurple }}>{HomeProduct[view].title}</h2>
+            <p className="text-[1.1rem] font-[600] mb-5" style={{ color: myyellow }}>{HomeProduct[view].price}</p>
+            <p className=" text-[.9rem] mb-10" style={{ color: myLightpurple }}>{HomeProduct[view].description}</p>
             <div className='flex border w-[100px] my-10'>
               <button onClick={decrease} className='w-[33%] ' >-</button>
               <p className=' p-1 px-2 border'>{count}</p>
               <button onClick={increase} className=' p-1 px-2 w-[33%] ' >+</button>
             </div>
             <div className='flex justify-between text-[20px]'>
-              <button className='px-5 py-1 rounded-[50px]' style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Cart</button>
+              <button className='px-5 py-1 rounded-[50px]' onClick={() => addtoKart(HomeProduct[view])} style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Cart</button>
               <div className='px-5 py-1 rounded-[50px]' style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Whishlist</div>
               
               
@@ -270,15 +224,15 @@ function Homepage() {
           </div>
 
           <div id="smallSlider" className="smallSlider flex flex-nowrap overflow-hidden justify-around ">
-            {data.map((_, index) => {
+            {HomeProduct.map((_, index) => {
               // not using alpha insted of using cardIndex bcoz alpha index value is same so we the below equation to increase alpha index value for each card
-              const cardIndex = (alpha + index) % data.length;
+              const cardIndex = (alpha + index) % HomeProduct.length;
               return (
                 <div key={cardIndex} className="card " >
                   <Card
-                    imgUrl={data[cardIndex].imgUrl}
-                    title={data[cardIndex].title}
-                    price={data[cardIndex].price}
+                    imgUrl={HomeProduct[cardIndex].imgUrl[0]}
+                    title={HomeProduct[cardIndex].title}
+                    price={HomeProduct[cardIndex].price}
                     onClick={() => hendelQuickView(cardIndex)}
                   />
                 </div>

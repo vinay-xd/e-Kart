@@ -127,7 +127,16 @@
 .sec3btn:hover{
   background-color: #8800cc !important;
 }
-
+/* footer */
 .FconItem ul li, th{
   padding: 10px 5px;
+}
+/* about page */
+.sec1Image{
+  transition: all .7s ease-out;
+  object-fit: cover;
+  height: 100%;
+}
+.sec1ImgCon:hover .sec1Image{
+  transform: scale(1.1);
 }
