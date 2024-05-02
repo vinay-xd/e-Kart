@@ -162,7 +162,7 @@ export const HomeProduct = [
     },
     {
       id: 6,
-      imgUrl: [Images.blacktShirt01, Images.blackShirt02],
+      imgUrl: [Images.blacktShirt01, Images.blacktShirt02],
       title: "Black T-shirt",
       price: '₹800',
       description: 'Introducing our newest addition, the "StyleShift Collection." Dive into a world where comfort meets elegance. Crafted from premium fabrics, each piece is meticulously designed to elevate your wardrobe. From versatile basics to statement pieces, redefine your style effortlessly with the StyleShift Collection.'

@@ -6,10 +6,10 @@ import { MyContext } from '../../Data/ContextApi';
 
 
 function Cart() {
-    const {addtocart} = useContext(MyContext);
-    const [count, setCount] = useState(1)
-    const increase = () => { setCount(count + 1) }
-    const decrease = () => { count > 0 ? setCount(count - 1) : '' }
+    const { addtocart, count, Increase, Decrease } = useContext(MyContext);
+    // const [count, setCount] = useState(1)
+    // const increase = () => { setCount(count + 1) }
+    // const decrease = () => { count > 0 ? setCount(count - 1) : '' }
     console.log(addtocart);
 
 
@@ -17,43 +17,29 @@ function Cart() {
         <>
 
 
+            <div className='mt-52 bg-white p-5'>
+                <ul className='flex'>
+                    {addtocart.map((item) => (
+                        <li key={item.id}>
+                            {item.title}
+                            {item.price}
+                        Count: {item.count}
+                        <button onClick={() => Increase(item.id)} className=' p-1 px-2 ' >+</button>
+                        <button onClick={() => Decrease(item.id)} className=' p-1 px-2 '>-</button>
+                        {console.log(item.id)}
+                        </li>
+                        // console.log(item.title);
+                    ))
+                    }
+                </ul>
+            </div>
 
-            <table className='w-[800px] mx-auto my-10'>
-                <tr className='border '>
-                    <th className='w-[50%] border' >Product</th>
-                    <th className='w-[25%] border'>Count</th>
-                    <th className='w-[25%] border'>Price</th>
-                </tr>
-                <tr className='border '>
-                    <td className='w-[50%] border '>
-                        <div className='Cart text-center my-5'>
-                            {/* <div className='cart-img w-[50%] mx-auto '><img src={Images.image} alt="" /></div>
-                            <div className='cart-title mt-3 capitalize' >product</div> */}
-                            <div className='w-[50px] h-[50px] mt-52 z-50'>
-                                <ul>
-                                    {addtocart.map((item) => (
-                                         <li key={item.id}>
-                                            {item.title}
-                                            {item.price}
-                                           
-                                        </li>
-                                        // console.log(item.title);
-                                    ))
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                    <td className='w-[25%]  '>
-                        <div className='flex border justify-between ml-16 w-20'>
-                            <button onClick={increase} className=' p-1 px-2 ' >+</button>
-                            <p className=' p-1 px-2'>{count}</p>
-                            <button onClick={decrease} className=' p-1 px-2 '>-</button>
-                        </div>
-                    </td>
-                    <td className=' text-center w-[25%] border'>Price</td>
-                </tr>
-            </table>
+            {/* <div className='flex border justify-between ml-16 w-20'>
+                
+                <p className=' p-1 px-2'>{count}</p>
+                
+            </div> */}
+
 
 
 

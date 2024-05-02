@@ -16,12 +16,42 @@ import { MyContext, HomeProduct, ShopProduct } from './Data/ContextApi'
 
 function App() {
   const [addtocart, setaddtocart] = useState([]);
-  const addtoKart = (ShopProduct) => {
-    setaddtocart([...addtocart, ShopProduct ])
-    console.log(ShopProduct);
+
+  const addtoKart = () => {
+    const productToadd = ShopProduct[view];
+    console.log(productToadd);
+    const itemIndex = addtocart.findIndex(item => item.id === productToadd.id);
+    if (itemIndex !== -1) {
+      const updateaddtocartlist = [...addtocart];
+      updateaddtocartlist[itemIndex].count += 1;
+      setaddtocart(updateaddtocartlist);
+    }
+    else {
+      setaddtocart([...addtocart, { ...productToadd, count: 1 }])
+    }
   }
+  const Increase = (id) => {
+    setaddtocart((prevState) => {
+      return prevState.map((item) => {
+        if (id === item.id && item.count < 10) {
+          return { ...item, count: item.count + 1 };
+        }
+        return item;
+      })
+    })
+  }
+  const Decrease = (id) => {
+    setaddtocart((prevState) => {
+      return prevState.map((item) => {
+        if (id === item.id && item.count > 1) {
+          return { ...item, count: item.count - 1 };
+        }
+        return item;
+      })
+    })
 
-
+  }
+// ........................................................................quick view
   const [view, setview] = useState(0)
   const hendelQuickView = (index) => {
     const quickCon = document.getElementById('quickCon');
@@ -34,33 +64,33 @@ function App() {
   useEffect(() => {
     setaddi([HomeProduct[view]])
   }, [view]);
-  console.log(addi);
-    const hendelQuickViewClose = () => {
-      const quickCon = document.getElementById('quickCon');
-      const overlay = document.getElementById('overlay');
-      quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
-      overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-    }
+
+  const hendelQuickViewClose = () => {
+    const quickCon = document.getElementById('quickCon');
+    const overlay = document.getElementById('overlay');
+    quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
+    overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
+  }
   return (
     <>
-    <MyContext.Provider value={{ addtocart, addtoKart, HomeProduct, ShopProduct, hendelQuickView, hendelQuickViewClose, view, addi}} >
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path = '/' element = {<Homepage />} />
-        <Route path = '/men' element = {<Men/>}/>
-        <Route path = '/women' element = {<Women/>}/>
-        <Route path = '/login' element = {<Login/>}/>
-        <Route path = '/signup' element = {<Signup/>}/>
-        <Route path = '/about' element = {<About/>}/>
-        <Route path = '/contact' element = {<Contact/>}/>
-        <Route path = '/cart'  element = {<Cart />} />
-      
-      </Routes>
-      <Footer/>
-    </Router>
-    </MyContext.Provider>
-    
+      <MyContext.Provider value={{ addtocart, addtoKart, HomeProduct, ShopProduct, hendelQuickView, hendelQuickViewClose, view, addi, Increase, Decrease }} >
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/men' element={<Men />} />
+            <Route path='/women' element={<Women />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/cart' element={<Cart />} />
+
+          </Routes>
+          <Footer />
+        </Router>
+      </MyContext.Provider>
+
     </>
   )
 }

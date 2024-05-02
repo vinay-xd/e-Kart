@@ -13,13 +13,9 @@ import { MyContext } from "../../Data/ContextApi";
 
 
 function Homepage() {
-  const {addtoKart} = useContext(MyContext);
-  const {HomeProduct} = useContext(MyContext);
-  const {hendelQuickView, hendelQuickViewClose, view, addi} = useContext(MyContext);
-  console.log(addi);
- 
+  const { addtoKart, HomeProduct, hendelQuickView, hendelQuickViewClose, view, addi, addtocart, count, Increase, Decrease } = useContext(MyContext);
+  // console.log(addi);
 
-  
   const slider = [
     {
       id: 1,
@@ -82,31 +78,16 @@ function Homepage() {
     setalpha((alpha - 1 + HomeProduct.length) % HomeProduct.length);
   }
 
-  // ........................................................................quick view
-  // const [view, setview] = useState(0)
-  // const hendelQuickView = (index) => {
-  //   const quickCon = document.getElementById('quickCon');
-  //   const overlay = document.getElementById('overlay');
-  //   quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
-  //   overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-  //   setview(index);
-    // console.log(index);
-    // console.log('clicked');
-  // }
-  // const hendelQuickViewClose = () => {
-  //   const quickCon = document.getElementById('quickCon');
-  //   const overlay = document.getElementById('overlay');
-  //   quickCon.style.display = quickCon.style.display === 'none' ? 'block' : 'none';
-  //   overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
-  // }
-  const [count, setCount] = useState(1)
-  const increase = () => { setCount(count + 1) }
-  const decrease = () => { count > 0 ? setCount(count - 1) : '' }
+
+  // small image replace main image 
+  const [thumbnail, setthumbnail] = useState(0)
+  const handelthumbnail = (index) => {
+    setthumbnail(index)
+  }
 
   return (
     <>
-  
-     
+
       {/* slider................................................... */}
       <div className="slider w-[100%] h-[700px] overflow-hidden mx-auto"
         style={{ backgroundImage: `url(${slider[number].src})`, backgroundSize: "cover", backgroundPosition: "center" }}>
@@ -174,30 +155,29 @@ function Homepage() {
         <button onClick={hendelQuickViewClose}>X</button>
         <div className="flex justify-between m-5 ">
           <div className='quickImgcon relative w-[480px] '>
-            <div className='quickMainImg'><img className="w-[100%] h-[450px] object-cover" src={HomeProduct[view].imgUrl[0]} alt="" /></div>
-            <ul className='quicksecImg absolute'>
-              {addi.map( (item) => (
-                  item.imgUrl.map((url) => (
-                    <li><img src={url} alt="" /></li>    
+            <div className='quickMainImg'>
+              <img className="w-[100%] h-[450px] object-cover" src={HomeProduct[view].imgUrl[thumbnail]} alt="" />
+            </div>
+            <div className='quicksecImg absolute bottom-[1%] left-[50%] translate-x-[-50%] w-[70%]'>
+              <ul className=" flex justify-evenly">
+                {addi.map((item) => (
+                  item.imgUrl.map((url, index) => (
+                    <li className="" key={index} onClick={() => handelthumbnail(index)}><img className="w-[80px] rounded-[5px] h-[80px] object-cover hover:scale-150 transition-all duration-300 ease-in-out" src={url} alt="" /></li>
                   ))
-              ))}
-              {/* <li><img src={imgUrl} alt="" /></li> */}
-            </ul>
+                ))}
+                {/* <li><img src={imgUrl} alt="" /></li> */}
+              </ul>
+            </div>
           </div>
           <div className='quickDeccon w-[480px] px-4 py-2'>
             <h2 className="text-[1.5rem] font-[700] mb-3" style={{ color: myDarkpurple }}>{HomeProduct[view].title}</h2>
             <p className="text-[1.1rem] font-[600] mb-5" style={{ color: myyellow }}>{HomeProduct[view].price}</p>
             <p className=" text-[.9rem] mb-10" style={{ color: myLightpurple }}>{HomeProduct[view].description}</p>
-            <div className='flex border w-[100px] my-10'>
-              <button onClick={decrease} className='w-[33%] ' >-</button>
-              <p className=' p-1 px-2 border'>{count}</p>
-              <button onClick={increase} className=' p-1 px-2 w-[33%] ' >+</button>
-            </div>
             <div className='flex justify-between text-[20px]'>
               <button className='px-5 py-1 rounded-[50px]' onClick={() => addtoKart(HomeProduct[view])} style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Cart</button>
               <div className='px-5 py-1 rounded-[50px]' style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Whishlist</div>
-              
-              
+                {/* {console.log(HomeProduct[view].id)} */}
+
             </div>
           </div>
         </div>
