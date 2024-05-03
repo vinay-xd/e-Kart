@@ -11,21 +11,22 @@ import Signup from './component/Login/Signup'
 import About from './component/About/About'
 import Contact from './component/Contact/Contact'
 import Cart from './component/Cart/Cart'
+import Wishlist from './component/WishList/Wishlist'
 import { MyContext, HomeProduct, ShopProduct } from './Data/ContextApi'
 
 
 function App() {
   const [addtocart, setaddtocart] = useState([]);
-
-  const addtoKart = () => {
-    const productToadd = ShopProduct[view];
+  const addtoKart = (id) => {
+    const productToadd = ShopProduct[id - 1];
     console.log(productToadd);
     const itemIndex = addtocart.findIndex(item => item.id === productToadd.id);
-    if (itemIndex !== -1) {
+    if (itemIndex !== -1 ) {
       const updateaddtocartlist = [...addtocart];
+      if(updateaddtocartlist[itemIndex].count < 10){
       updateaddtocartlist[itemIndex].count += 1;
       setaddtocart(updateaddtocartlist);
-    }
+    }}
     else {
       setaddtocart([...addtocart, { ...productToadd, count: 1 }])
     }
@@ -49,9 +50,19 @@ function App() {
         return item;
       })
     })
-
   }
-// ........................................................................quick view
+
+  const [addtowish, setaddtowish] = useState(new Set())
+  const addtolist = (item) => {
+    setaddtowish(new Set([...addtowish, item]))
+  }
+  const addtowisharray = Array.from(addtowish);
+  console.log(addtowish);
+  const removeWishlist = (id) => {
+    setaddtowish(addtowisharray.filter(list => list.id !== id))
+  }
+
+  // ........................................................................quick view
   const [view, setview] = useState(0)
   const hendelQuickView = (index) => {
     const quickCon = document.getElementById('quickCon');
@@ -60,6 +71,7 @@ function App() {
     overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
     setview(index);
   }
+
   const [addi, setaddi] = useState([])
   useEffect(() => {
     setaddi([HomeProduct[view]])
@@ -73,7 +85,7 @@ function App() {
   }
   return (
     <>
-      <MyContext.Provider value={{ addtocart, addtoKart, HomeProduct, ShopProduct, hendelQuickView, hendelQuickViewClose, view, addi, Increase, Decrease }} >
+      <MyContext.Provider value={{ addtocart, addtoKart, addtolist, addtowisharray, addtowish, removeWishlist, HomeProduct, ShopProduct, hendelQuickView, hendelQuickViewClose, view, addi, Increase, Decrease }} >
         <Router>
           <Navbar />
           <Routes>
@@ -85,6 +97,7 @@ function App() {
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/Wishlist' element={<Wishlist />} />
 
           </Routes>
           <Footer />

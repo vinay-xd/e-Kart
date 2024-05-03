@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GoPerson } from "react-icons/go";
 import { PiShoppingBagThin } from "react-icons/pi"
+import { CiHeart } from "react-icons/ci";
 import { Link, useLocation } from 'react-router-dom';
 import { myblack, myred, myyellow, myorange, myLightpurple, myLightgreen, myDarkgreen, myDarkpurple } from '../Images/index';
 import { MyContext } from '../../Data/ContextApi';
@@ -55,6 +56,7 @@ function Navbar() {
                 </div>
 
                 <div className='mr-5 flex'>
+                    <Link to={'/wishlist'}><div className='Nav-icon'><CiHeart /></div></Link>
                     <Link to={'/cart'}>
                         <div className='Nav-icon relative'>
                             <PiShoppingBagThin />
@@ -62,6 +64,7 @@ function Navbar() {
                         </div>
                     </Link>
                     <Link to={'/login'}><div className='Nav-icon'><GoPerson /></div></Link>
+
                 </div>
             </div>
             { }

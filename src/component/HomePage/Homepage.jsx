@@ -13,7 +13,7 @@ import { MyContext } from "../../Data/ContextApi";
 
 
 function Homepage() {
-  const { addtoKart, HomeProduct, hendelQuickView, hendelQuickViewClose, view, addi, addtocart, count, Increase, Decrease } = useContext(MyContext);
+  const { addtoKart, HomeProduct, hendelQuickView, hendelQuickViewClose, view, addi, addtolist } = useContext(MyContext);
   // console.log(addi);
 
   const slider = [
@@ -141,6 +141,7 @@ function Homepage() {
               title={i.title}
               price={i.price}
               onClick={() => hendelQuickView(index)}
+              wishlist={() => addtolist(HomeProduct[index])}
             />
           ))}
         </div>
@@ -174,8 +175,8 @@ function Homepage() {
             <p className="text-[1.1rem] font-[600] mb-5" style={{ color: myyellow }}>{HomeProduct[view].price}</p>
             <p className=" text-[.9rem] mb-10" style={{ color: myLightpurple }}>{HomeProduct[view].description}</p>
             <div className='flex justify-between text-[20px]'>
-              <button className='px-5 py-1 rounded-[50px]' onClick={() => addtoKart(HomeProduct[view])} style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Cart</button>
-              <div className='px-5 py-1 rounded-[50px]' style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Whishlist</div>
+              <button className='px-5 py-1 rounded-[50px]' onClick={() => addtoKart(HomeProduct[view].id)} style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Cart</button>
+              <button className='px-5 py-1 rounded-[50px]' onClick={() => addtolist(HomeProduct[view])} style={{ backgroundColor: myLightpurple, color: mywhite }}>Add to Whishlist</button>
                 {/* {console.log(HomeProduct[view].id)} */}
 
             </div>

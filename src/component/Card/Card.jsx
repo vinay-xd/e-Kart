@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { CiHeart } from "react-icons/ci";
 import { myDarkgreen, myLightgreen, myLightpurple, myorange, myred, mywhite, myyellow } from '../Images';
-// 
-function Card({ imgUrl, title, description, price, onClick }) {
+
+ 
+function Card({ imgUrl, title, description, price, onClick, wishlist }) {
     
     return (
         <>
@@ -15,7 +16,7 @@ function Card({ imgUrl, title, description, price, onClick }) {
                 <div className='card-content p-2 '>
                     <div className='flex justify-between text-[14px]'style={{color:myLightpurple}}>
                         <h1 className='card-title mt-2 ' > {title}</h1>
-                        <button className='text-[20px] my-2 '><CiHeart /></button>
+                        <button className='text-[20px] my-2' onClick={wishlist} ><CiHeart /></button>
                     </div>
                     {/* <p className='card-description mb-5'>{description}</p> */}
                     <p className='card-price mb-5' style={{color:myyellow}}>{price}</p>
